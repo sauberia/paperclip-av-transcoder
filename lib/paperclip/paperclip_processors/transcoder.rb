@@ -67,6 +67,7 @@ module Paperclip
     end
 
     def transfer_convert_options
+      return unless convert_options.is_a?(Hash)
       convert_options.slice(:input, :output).each do |key, params|
         params.each do |param|
           param[1] = param[1].call(meta, options) if param[1].respond_to?(:call)
